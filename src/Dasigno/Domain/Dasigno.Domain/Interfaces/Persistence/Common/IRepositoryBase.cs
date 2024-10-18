@@ -56,4 +56,6 @@ public interface IRepositoryBase<TEntity, TId> : IReadRepositoryBase<TEntity, TI
     /// <param name="id"></param>
     /// <param name="cancellationToken"></param>
     Task DisableAsync(TId id, int userId, CancellationToken cancellationToken = default);
+    Task DeleteAsync(TEntity entity,CancellationToken cancellationToken=default);
+
 }

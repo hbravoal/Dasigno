@@ -3,6 +3,7 @@ using Serilog.Exceptions;
 using System.Globalization;
 using Dasigno.Infrastructure.Persistence;
 using Dasigno.Application;
+using Dasigno.User.Api.Middlewares;
 
 
 string AppName = "Dasigno.User";
@@ -56,6 +57,7 @@ try
     app.MapControllers();
 
     // app.ExecuteMigration(args);
+    app.UseMiddleware<ErrorHandlerMiddleware>();
 
     app.Run();
 

@@ -30,13 +30,12 @@ public abstract class GenericRepository<TEntity, TId> : IGenericRepository<TEnti
     #region CUD
 
     /// <inheritdoc/>
-    public virtual async Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken = default)
-        => await Task.Factory.StartNew(() =>
-        {
-            _context.Set<TEntity>().Add(entity);
-            return entity;
-        },
-        cancellationToken);
+    public virtual async Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken = default) 
+    {
+        await _context.Set<TEntity>().AddAsync(entity, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
+        return entity;
+    }
 
     /// <inheritdoc/>
     public virtual async Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
@@ -108,6 +107,11 @@ public abstract class GenericRepository<TEntity, TId> : IGenericRepository<TEnti
             new EntityProperty("DeleteUserId", userId.ToString())
         );
 
+    public async Task DeleteAsync(TEntity entity,CancellationToken token = default)
+    {
+        _context.Set<TEntity>().Remove(entity);
+        await _context.SaveChangesAsync(token);
+    }
     #endregion CUD
 
     #region Read
