@@ -1,6 +1,7 @@
 ﻿using Dasigno.Application.User.Commands.Create;
 using Dasigno.Application.User.Commands.DeleteById;
 using Dasigno.Application.User.Commands.Update;
+using Dasigno.Application.User.Queries.GetAll;
 using Dasigno.Application.User.Queries.GetById;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,6 +15,12 @@ public class UserController : BaseApiController
         return Ok(await Mediator.Send(command));
     }
         
+    [HttpGet]
+    public async Task<IActionResult> Get([FromQuery] GetUsersParameter filter)
+    {
+        return Ok(await Mediator.Send(new GetAllUsersQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
+    }
+    
     [HttpGet("{id}")]
     public async Task<IActionResult> Get(int id)
     {
