@@ -19,14 +19,22 @@ public static class ExtendMigration
     /// <param name="host">host instance</param>
     /// <example>host.ExecuteMigration(args);</example>
     /// <remarks>remember use attribute --run-migration when execute your application</remarks>
-    public static IHost ExecuteMigration(this IHost host, string[] args)
+    public static IHost ExecuteMigration(this IHost host)
     {
-        if (args.Contains("--run-migration"))
+        using (var scope = host.Services.CreateScope())
         {
-            var context = host.Services.GetService<UserContext>();
-            ArgumentNullException.ThrowIfNull(context);
-            if (context.Database.GetPendingMigrations().Any())
+            var services = scope.ServiceProvider;
+            try
+            {
+                var context = services.GetRequiredService<UserContext>();
                 context.Database.Migrate();
+            }
+            catch (Exception ex)
+            {
+                // Aquí puedes manejar el error según sea necesario
+                Console.WriteLine($"Error migrating database: {ex.Message}");
+                throw; // Puedes lanzar la excepción si deseas que detenga la aplicación
+            }
         }
 
         return host;
