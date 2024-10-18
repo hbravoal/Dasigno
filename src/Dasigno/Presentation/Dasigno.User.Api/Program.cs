@@ -2,7 +2,7 @@ using Serilog;
 using Serilog.Exceptions;
 using System.Globalization;
 using Dasigno.Infrastructure.Persistence;
-using Dasigno.Infrastructure.Persistence.Extension;
+using Dasigno.Application;
 
 
 string AppName = "Dasigno.User";
@@ -37,8 +37,9 @@ try
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
-
     builder.Services.AddPersistence(configuration);
+
+    builder.Services.AddApplicationLayer();
 
     var app = builder.Build();
 
