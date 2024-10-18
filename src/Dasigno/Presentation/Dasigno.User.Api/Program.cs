@@ -54,7 +54,7 @@ try
     app.UseAuthorization();
     app.MapControllers();
 
-    app.ExecuteMigration(args);
+    // app.ExecuteMigration(args);
 
     app.Run();
 
