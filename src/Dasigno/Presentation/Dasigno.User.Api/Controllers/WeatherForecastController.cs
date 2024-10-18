@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Dasigno.Api.Controllers
+namespace Dasigno.User.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

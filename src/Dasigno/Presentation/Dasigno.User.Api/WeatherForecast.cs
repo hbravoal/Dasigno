@@ -1,4 +1,4 @@
-namespace Dasigno.Api
+namespace Dasigno.User.Api
 {
     public class WeatherForecast
     {

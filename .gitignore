@@ -12,3 +12,7 @@ src/Dasigno/Dasigno.Api/bin/
 src/Dasigno/Infrastructure/Dasigno.Infrastructure.Persistence/bin/
 
 src/Dasigno/Infrastructure/Dasigno.Infrastructure.Persistence/obj/
+
+src/Dasigno/Presentation/Dasigno.User.Api/bin/
+
+src/Dasigno/Presentation/Dasigno.User.Api/obj/
