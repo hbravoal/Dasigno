@@ -6,3 +6,9 @@ src/Dasigno/Dasigno.Api/obj/
 src/Dasigno/Domain/Dasigno.Domain/obj/
 
 src/Dasigno/Domain/Dasigno.Domain/bin/
+
+src/Dasigno/Dasigno.Api/bin/
+
+src/Dasigno/Infrastructure/Dasigno.Infrastructure.Persistence/bin/
+
+src/Dasigno/Infrastructure/Dasigno.Infrastructure.Persistence/obj/
