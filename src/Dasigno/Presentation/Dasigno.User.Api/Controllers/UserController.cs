@@ -18,7 +18,7 @@ public class UserController : BaseApiController
     [HttpGet]
     public async Task<IActionResult> Get([FromQuery] GetUsersParameter filter)
     {
-        return Ok(await Mediator.Send(new GetAllUsersQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
+        return Ok(await Mediator.Send(new GetAllUsersQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber,FieldToSearch = filter.FieldToSearch,}));
     }
     
     [HttpGet("{id}")]

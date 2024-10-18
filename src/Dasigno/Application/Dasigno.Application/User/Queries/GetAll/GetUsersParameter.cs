@@ -2,4 +2,7 @@
 
 namespace Dasigno.Application.User.Queries.GetAll;
 
-public class GetUsersParameter : RequestParameter;
+public class GetUsersParameter : RequestParameter
+{
+    public string? FieldToSearch { get; set; }
+}
