@@ -48,7 +48,10 @@ public abstract class GenericRepository<TEntity, TId> : IGenericRepository<TEnti
 
     /// <inheritdoc/>
     public virtual async Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
-        => await Task.Factory.StartNew(() => _context.Set<TEntity>().Update(entity), cancellationToken);
+    {
+        _context.Entry(entity).State = EntityState.Modified;
+        await _context.SaveChangesAsync(cancellationToken);
+    }
 
     /// <summary>
     /// update all entity

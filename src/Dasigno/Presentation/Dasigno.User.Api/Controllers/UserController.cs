@@ -1,5 +1,6 @@
 ﻿using Dasigno.Application.User.Commands.Create;
 using Dasigno.Application.User.Commands.DeleteById;
+using Dasigno.Application.User.Commands.Update;
 using Dasigno.Application.User.Queries.GetById;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,4 +27,11 @@ public class UserController : BaseApiController
         return Ok(await Mediator.Send(new DeleteUserByIdCommand() { Id = id }));
     }
         
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Put(int id, UpdateUserCommand command)
+    {
+        command.SetId(id);
+        return Ok(await Mediator.Send(command));
+    }
+
 }
