@@ -22,3 +22,7 @@ src/Dasigno/.idea/
 src/Dasigno/Application/Dasigno.Application/obj/
 
 src/Dasigno/Application/Dasigno.Application/bin/
+
+src/Dasigno/Test/Dasigno.Test/bin/
+
+src/Dasigno/Test/Dasigno.Test/obj/
