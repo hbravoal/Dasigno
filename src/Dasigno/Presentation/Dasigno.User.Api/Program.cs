@@ -73,3 +73,4 @@ finally
     Log.CloseAndFlush();
 }
 
+public partial class ProgramApi { }

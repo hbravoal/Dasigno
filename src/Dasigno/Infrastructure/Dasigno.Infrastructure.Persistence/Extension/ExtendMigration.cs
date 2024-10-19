@@ -31,9 +31,8 @@ public static class ExtendMigration
             }
             catch (Exception ex)
             {
-                // Aquí puedes manejar el error según sea necesario
                 Console.WriteLine($"Error migrating database: {ex.Message}");
-                throw; // Puedes lanzar la excepción si deseas que detenga la aplicación
+                throw; 
             }
         }
 
